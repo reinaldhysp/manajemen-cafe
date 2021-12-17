@@ -10,7 +10,12 @@
           </div>
           <div class="section-body">
           <div class="skrtt">
-          <a href="{{ route('cetakform') }}" class="btn btn-primary" target="blank"><h6>Cetak Struk</h6></a>
+          <a href="{{ route('cetakform') }}" class="btn btn-primary" target="blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+            <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+            <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+          </svg>&nbsp <p class="d-inline">Cetak Struk</p> 
+          </a>
             <br><br>
           </div>
     <table class="table">
@@ -33,10 +38,10 @@
                   <td>Rp {{$food->food['price']}}</td>
                   <td>Rp {{$food->porsi_makanan * $food->food['price']}}.00</td>
                   <td>
-                  <form action="{{ url('food/'. $food->id )}}" method="post" class="d-inline" onsubmit="return confirm('Apakah Data Pekerja akan dihapus?')">
+                  <form action="{{ url('food/tes/'. $food->id )}}" method="post" class="d-inline" >
                       @method('delete')
                       @csrf
-                      <button type="submit" class="btn btn-danger">
+                      <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-trash"></i>
                       </button>
                   </form>
@@ -51,10 +56,10 @@
                   <td>Rp {{$drink->drinks['price']}}</td>
                   <td>Rp {{$drink->porsi_minuman * $drink->drinks['price']}}.00</td>
                   <td>
-                  <form action="{{ url('drink/'. $drink->id )}}" method="post" class="d-inline" onsubmit="return confirm('Apakah pesanan akan dihapus?')">
+                  <form action="{{ url('drink/tes/'. $drink->id )}}" method="post" class="d-inline">
                       @method('delete')
                       @csrf
-                      <button type="submit" class="btn btn-danger">
+                      <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-trash"></i>
                       </button>
                   </form>
@@ -66,6 +71,8 @@
 </div>
         </section>
       </div>
+
+      
 
 
 

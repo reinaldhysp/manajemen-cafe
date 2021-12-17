@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Kitchen;
 use App\Models\Food;
 use App\Models\Drink;
@@ -21,6 +22,11 @@ class KitchenController extends Controller
         $foodorder = FoodOrder::all();
         $drinkorder = DrinkOrder::all();
         return view('kitchens.dashboard', compact('foodorder','drinkorder'));
+    }
+
+    public function panduan()
+    {
+        return view('kitchens.panduan');
     }
 
     public function menumakanan()
@@ -123,9 +129,15 @@ class KitchenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editfood($id)
     {
-        //
+        $food = DB::table('food')->where('id',$id)->first();
+        return view('kitchens.editmakanan', compact('food'));
+    }
+    public function editdrink($id)
+    {
+        $drink = DB::table('drinks')->where('id',$id)->first();
+        return view('kitchens.editminuman', compact('drink'));
     }
 
     /**
@@ -135,9 +147,39 @@ class KitchenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatefood(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'food_name' => 'required',
+            'price' => 'required',
+            
+        ]);
+
+        DB::table('food')->where('id',$id)
+        ->update([
+            'food_name' => $request->food_name,
+            'price' => $request->price,
+            
+        ]);       
+
+        return redirect('/kitchen/menumakanan')->with('success','Update Berhasil');
+    }
+    public function updatedrink(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'drink_name' => 'required',
+            'price' => 'required',
+            
+        ]);
+
+        DB::table('drinks')->where('id',$id)
+        ->update([
+            'drink_name' => $request->drink_name,
+            'price' => $request->price,
+            
+        ]);       
+
+        return redirect('/kitchen/menuminuman')->with('success','Update Berhasil');
     }
 
     /**
@@ -170,6 +212,17 @@ class KitchenController extends Controller
         );
 
         return redirect('/kitchen/dashboard')->with('success','Status berhasil di update!');
+    }
+
+    public function destroyfood($id)
+    {
+        Food::destroy($id);
+        return redirect('/kitchen/menumakanan');
+    }
+    public function destroydrink($id)
+    {
+        Drink::destroy($id);
+        return redirect('/kitchen/menuminuman');
     }
 
 }

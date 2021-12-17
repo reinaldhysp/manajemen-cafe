@@ -23,12 +23,14 @@
               </tr>
           </thead>
           <tbody>
+            @php($total = 0)
               @foreach($cetakfood as $item)
               <tr>
                   <td>{{$item->food['food_name']}}</td>
                   <td>{{$item->porsi_makanan}}</td>
                   <td>{{$item->porsi_makanan * $item->food['price']}}</td>
               </tr>
+              @php($total += $item->porsi_makanan * $item->food['price'])
               @endforeach
 
               @foreach($cetakdrink as $item)
@@ -37,16 +39,13 @@
                   <td>{{$item->porsi_minuman}}</td>
                   <td>{{$item->porsi_minuman * $item->drinks['price']}}</td>
               </tr>
+              @php($total += $item->porsi_minuman * $item->drinks['price'])
               @endforeach
-              @foreach($cetakfood as $item)
-              @foreach($cetakdrink as $item1)
               <tr>
                 <th>Total Harga </th>
                 <th>:</th>
-                <th>{{($item->porsi_makanan * $item->food['price']) + ($item1->porsi_minuman * $item1->drinks['price'])}}</th>
+                <th>{{ $total }}</th>
               </tr>
-              @endforeach
-              @endforeach
           </tbody>
           <br>
     </table>

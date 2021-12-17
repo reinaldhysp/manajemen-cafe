@@ -35,7 +35,7 @@
           </ul>
         </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+          <!-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i class="far fa-bell"></i>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Notifications
                 <div class="float-right">
@@ -57,7 +57,7 @@
                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
-          </li>
+          </li> -->
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="/uploaded/avatar/{{Auth::user()->avatar}}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hai, {{Auth::user()->name}}</div></a>
@@ -99,7 +99,15 @@
               <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Panduan</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="#">Panduan Apps</a></li>
+                  @can('casir')
+                    <li><a class="nav-link" href="/casir/panduan">Panduan Apps</a></li>
+                  @endcan
+                  @can('waiter')
+                    <li><a class="nav-link" href="/waiters/panduan">Panduan Apps</a></li>
+                  @endcan
+                  @can('kitchen')
+                    <li><a class="nav-link" href="/kitchen/panduan">Panduan Apps</a></li>
+                  @endcan
                 </ul>
               </li>
               <li class="menu-header">Waiter</li>

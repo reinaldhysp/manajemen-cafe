@@ -3,7 +3,7 @@
       <div class="pads">        
         <label>Pemesanan : </label>
       </div>
-          <select name="servis" class="form-control col-2" required>
+          <select name="servis" class="form-control col-2" >
             <option value="">-- Pilih Servis --</option>
             @foreach ($servisPesanan as $itemss)
             <option value="{{ $itemss->id }}">{{ $itemss->servis }}</option>
@@ -17,7 +17,7 @@
         <div class="pads">
         <label>Nomor Meja : </label>
         </div>
-        <select name="no_meja" class="form-control col-2" required>
+        <select name="no_meja" class="form-control col-2" >
             <option value="">-- Pilih Meja --</option>
             @foreach ($nomorMeja as $item)
             <option value="{{ $item->id }}">{{ $item->id }}</option>

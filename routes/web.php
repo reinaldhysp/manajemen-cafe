@@ -46,9 +46,9 @@ Route::resource('/waiter/help',CasirController::class)->except('show')->middlewa
 Route::get('/casir/worker',[App\Http\Controllers\WorkerController::class, 'index'])->name('worker')->middleware('casir');
 Route::get('/casir/add','App\Http\Controllers\WorkerController@create');
 Route::patch('/casir/worker','App\Http\Controllers\WorkerController@store');
-Route::delete('worker/{id}','App\Http\Controllers\WorkerController@destroy');
-Route::delete('food/{id}','App\Http\Controllers\CasirController@destroyfood');
-Route::delete('drink/{id}','App\Http\Controllers\CasirController@destroydrink');
+Route::delete('worker/tes/{id}','App\Http\Controllers\WorkerController@destroy');
+Route::delete('food/tes/{id}','App\Http\Controllers\CasirController@destroyfood');
+Route::delete('drink/tes/{id}','App\Http\Controllers\CasirController@destroydrink');
 Route::get('waiter/edit','App\Http\Controllers\WorkerController@edit');
 Route::patch('/waiter/{id}','App\Http\Controllers\WorkerController@update');
 Route::patch('/pesan/{id}/food','App\Http\Controllers\KitchenController@updatestatusfood');
@@ -61,7 +61,50 @@ Route::patch('/kitchen/menumakanan','App\Http\Controllers\KitchenController@stor
 Route::patch('/kitchen/menuminuman','App\Http\Controllers\KitchenController@storedrink');
 Route::get('/casir/cetakstruk',[App\Http\Controllers\CasirController::class, 'cetak'])->name('cetakstruk');
 Route::get('/casir/cetakform',[App\Http\Controllers\CasirController::class, 'cetakform'])->name('cetakform');
+Route::get('/casir/panduan',[App\Http\Controllers\CasirController::class, 'panduan'])->name('panduan');
+Route::get('/waiters/panduan',[App\Http\Controllers\WaiterController::class, 'panduan'])->name('panduan');
+Route::get('/kitchen/panduan',[App\Http\Controllers\KitchenController::class, 'panduan'])->name('panduan');
 Route::get('/casir/cetakpesanan/{meja}',[App\Http\Controllers\CasirController::class, 'cetakpesanan'])->name('cetakpesanan');
+Route::get('/foods/{id}','App\Http\Controllers\KitchenController@editfood');
+Route::patch('/food/{id}','App\Http\Controllers\KitchenController@updatefood');
+Route::get('/drinks/{id}','App\Http\Controllers\KitchenController@editdrink');
+Route::patch('/drink/{id}','App\Http\Controllers\KitchenController@updatedrink');
+Route::delete('food/{id}','App\Http\Controllers\KitchenController@destroyfood');
+Route::delete('drink/{id}','App\Http\Controllers\KitchenController@destroydrink');
+
+Route::get('/panduan/transaksi', function () {
+    return view('casir.panduan.transaksi');
+});
+
+Route::get('/panduan/pekerja', function () {
+    return view('casir.panduan.pekerja');
+});
+
+Route::get('/panduan/profil', function () {
+    return view('casir.panduan.profil');
+});
+Route::get('/panduan/pesanan', function () {
+    return view('waiters.panduan.pesanan');
+});
+
+Route::get('/panduan/profil', function () {
+    return view('waiters.panduan.profil');
+});
+
+Route::get('/panduan/status', function () {
+    return view('waiters.panduan.status');
+});
+Route::get('/panduan/statuss', function () {
+    return view('kitchens.panduan.status');
+});
+
+Route::get('/panduan/menu', function () {
+    return view('kitchens.panduan.menu');
+});
+
+Route::get('/panduan/profils', function () {
+    return view('kitchens.panduan.profil');
+});
 
 Route::get('profile', 'App\Http\Controllers\ProfileController@edit')->name('profile.edit'); 
 Route::patch('profile', 'App\Http\Controllers\ProfileController@update') ->name('profile.update'); 

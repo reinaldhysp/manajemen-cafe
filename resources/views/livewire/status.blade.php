@@ -5,6 +5,9 @@
             <h1>Status Pemesanan</h1>
           </div>
           <div class="section-body">
+            <div class="bers">
+            <a class="btn btn btn-primary text-white" href="/pemesanan/tambah">Tambah Pesanan</a>
+            </div>
             @if ($pesananMakanan->count() || $pesananMinuman->count())
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12">

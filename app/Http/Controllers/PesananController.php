@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DrinkOrder;
-use App\Models\DrinkOrdersBackup;
 use App\Models\FoodOrder;
-use App\Models\FoodOrdersBackup;
 use Illuminate\Http\Request;
 
 class PesananController extends Controller
@@ -47,8 +45,8 @@ class PesananController extends Controller
         foreach ($request->pesananMakanan as $key => $value) {
             if ($value['makanan_dipesan'] != NULL) {
             $orders = FoodOrder::create([
-                'servis' => $request->servis[0],
-                'no_meja' => $request->no_meja[0],
+                'servis' => $request->servis,
+                'no_meja' => $request->no_meja,
                 'makanan_dipesan' => $value['makanan_dipesan'],
                 'porsi_makanan' => $value['porsi_makanan']
             ]);
@@ -59,8 +57,8 @@ class PesananController extends Controller
         foreach ($request->pesananMinuman as $key => $value) {
             if ($value['minuman_dipesan'] != NULL) {
             $orders = DrinkOrder::create([
-                'servis' => $request->servis[0],
-                'no_meja' => $request->no_meja[0],
+                'servis' => $request->servis,
+                'no_meja' => $request->no_meja,
                 'minuman_dipesan' => $value['minuman_dipesan'],
                 'porsi_minuman' => $value['porsi_minuman']
             ]);

@@ -23,6 +23,11 @@ class WaiterController extends Controller
         return view('waiters.dashboard', compact('waiters'));
     }
 
+    public function panduan()
+    {
+        return view('waiters.panduan');
+    }
+
     public function dashboard()
     {
         $foodorder = FoodOrder::all();

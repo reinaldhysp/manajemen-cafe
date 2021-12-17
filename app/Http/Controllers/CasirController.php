@@ -23,6 +23,11 @@ class CasirController extends Controller
         return view('casir.dashboard', compact('foodorder','drinkorder'));
     }
 
+    public function panduan()
+    {
+        return view('casir.panduan');
+    }
+
     public function cetak()
     {
         $foodorder = FoodOrder::all();
