@@ -138,7 +138,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/casir/dashboard">Data Pesanan</a></li>
                   <li><a class="nav-link" href="/casir/worker">Data Pekerja</a></li>
-                  
+                  <!-- <li><a class="nav-link" href="/casir/riwayatpesanan">Riwayat Pemesanan</a></li> -->
                 </ul>
               </li>
               @endcan

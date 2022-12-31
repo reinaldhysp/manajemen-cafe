@@ -28,6 +28,13 @@ class CasirController extends Controller
         return view('casir.panduan');
     }
 
+    public function riwayat()
+    {
+        $foodorder = FoodOrder::onlyTrashed()->get();
+        $drinkorder = DrinkOrder::onlyTrashed()->get();
+        return view('casir.riwayatpemesanan', compact('foodorder','drinkorder'));
+    }
+
     public function cetak()
     {
         $foodorder = FoodOrder::all();
@@ -121,5 +128,12 @@ class CasirController extends Controller
     {
         DrinkOrder::destroy($id);
         return redirect('/casir/dashboard');
+    }
+
+    public function deleteAll()
+    {
+        FoodOrder::query()->delete();
+        DrinkOrder::truncate();
+        return redirect('/casir/riwayatpesanan');
     }
 }

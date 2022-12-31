@@ -37,7 +37,7 @@
                 <td>{{$worker->email}}</td>
                 <td>{{$worker->role}}</td>
                 <td>
-                  <form action="{{ url('worker/'. $worker->id )}}" method="post" class="d-inline" onsubmit="return confirm('Apakah Data Pekerja akan dihapus?')">
+                  <form action="{{ url('worker/tes/'. $worker->id )}}" method="post" class="d-inline" onsubmit="return confirm('Apakah Data Pekerja akan dihapus?')">
                       @method('delete')
                       @csrf
                       <button type="submit" class="btn btn-danger">

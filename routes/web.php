@@ -49,6 +49,7 @@ Route::patch('/casir/worker','App\Http\Controllers\WorkerController@store');
 Route::delete('worker/tes/{id}','App\Http\Controllers\WorkerController@destroy');
 Route::delete('food/tes/{id}','App\Http\Controllers\CasirController@destroyfood');
 Route::delete('drink/tes/{id}','App\Http\Controllers\CasirController@destroydrink');
+Route::get('/riwayat',[App\Http\Controllers\CasirController::class, 'deleteAll'])->name('riwayat');
 Route::get('waiter/edit','App\Http\Controllers\WorkerController@edit');
 Route::patch('/waiter/{id}','App\Http\Controllers\WorkerController@update');
 Route::patch('/pesan/{id}/food','App\Http\Controllers\KitchenController@updatestatusfood');
@@ -62,6 +63,7 @@ Route::patch('/kitchen/menuminuman','App\Http\Controllers\KitchenController@stor
 Route::get('/casir/cetakstruk',[App\Http\Controllers\CasirController::class, 'cetak'])->name('cetakstruk');
 Route::get('/casir/cetakform',[App\Http\Controllers\CasirController::class, 'cetakform'])->name('cetakform');
 Route::get('/casir/panduan',[App\Http\Controllers\CasirController::class, 'panduan'])->name('panduan');
+Route::get('/casir/riwayatpesanan',[App\Http\Controllers\CasirController::class, 'riwayat'])->name('riwayat');
 Route::get('/waiters/panduan',[App\Http\Controllers\WaiterController::class, 'panduan'])->name('panduan');
 Route::get('/kitchen/panduan',[App\Http\Controllers\KitchenController::class, 'panduan'])->name('panduan');
 Route::get('/casir/cetakpesanan/{meja}',[App\Http\Controllers\CasirController::class, 'cetakpesanan'])->name('cetakpesanan');
